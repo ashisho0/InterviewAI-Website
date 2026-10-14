@@ -10,7 +10,7 @@ the only server code is the contact form action.
 
 ```bash
 npm install
-cp .env.example .env.local   # then fill in ZOHO_SMTP_PASS
+cp .env.example .env.local   # then fill in RESEND_API_KEY
 npm run dev                  # http://localhost:3000
 ```
 
@@ -18,8 +18,8 @@ npm run dev                  # http://localhost:3000
 |---|---|
 | `NEXT_PUBLIC_SITE_URL` | This site's URL (canonical URLs, sitemap, Open Graph). Default `https://www.interviewai.cc` |
 | `NEXT_PUBLIC_APP_URL` | Where every "Try now" button goes. Default `https://www.app.interviewai.cc/` |
-| `ZOHO_SMTP_HOST` / `ZOHO_SMTP_PORT` | Zoho SMTP server, `smtp.zoho.com` / `465` |
-| `ZOHO_SMTP_USER` / `ZOHO_SMTP_PASS` | Mailbox and **app-specific password** (Zoho → Account → Security → App Passwords) |
+| `CONTACT_FROM_EMAIL` | Sender, on a domain verified in Resend |
+| `RESEND_API_KEY` | API key from https://resend.com (free tier) |
 | `CONTACT_TO_EMAIL` | Where contact messages are delivered |
 
 Without SMTP credentials, the contact form logs messages in development and shows an error in production.

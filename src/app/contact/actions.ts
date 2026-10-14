@@ -1,12 +1,13 @@
 "use server";
 
-import nodemailer from "nodemailer";
 import { contactSchema, type ContactField, type ContactState } from "@/lib/contact-schema";
 
 const FIELDS: ContactField[] = ["name", "email", "role", "message"];
 
-function smtpConfigured() {
-  return Boolean(process.env.ZOHO_SMTP_USER && process.env.ZOHO_SMTP_PASS);
+const RESEND_ENDPOINT = "https://api.resend.com/emails";
+
+function emailConfigured() {
+  return Boolean(process.env.RESEND_API_KEY);
 }
 
 export async function sendContactMessage(_prev: ContactState, formData: FormData): Promise<ContactState> {
@@ -29,30 +30,34 @@ export async function sendContactMessage(_prev: ContactState, formData: FormData
 
   const { name, email, role, message } = parsed.data;
 
-  if (!smtpConfigured()) {
+  if (!emailConfigured()) {
     if (process.env.NODE_ENV !== "production") {
-      console.info("[contact] SMTP not configured; message not sent:", { name, email, role, message });
+      console.info("[contact] RESEND_API_KEY not set; message not sent:", { name, email, role, message });
       return { status: "success", message: "Thanks! (Development mode: the message was logged, not emailed.)" };
     }
-    console.error("[contact] ZOHO_SMTP_USER / ZOHO_SMTP_PASS are not set");
+    console.error("[contact] RESEND_API_KEY is not set");
     return { status: "error", message: "We couldn't send your message right now. Please email us instead.", values };
   }
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.ZOHO_SMTP_HOST ?? "smtp.zoho.com",
-      port: Number(process.env.ZOHO_SMTP_PORT ?? 465),
-      secure: Number(process.env.ZOHO_SMTP_PORT ?? 465) === 465,
-      auth: { user: process.env.ZOHO_SMTP_USER, pass: process.env.ZOHO_SMTP_PASS },
+    // Sent through Resend; the visitor goes in reply_to so replying from the inbox reaches them.
+    const response = await fetch(RESEND_ENDPOINT, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: process.env.CONTACT_FROM_EMAIL ?? "InterviewAI website <contact@interviewai.cc>",
+        to: [process.env.CONTACT_TO_EMAIL ?? "ashish@interviewai.cc"],
+        reply_to: `${name} <${email}>`,
+        subject: `[InterviewAI] ${role} enquiry from ${name}`,
+        text: `Name: ${name}\nEmail: ${email}\nI am a: ${role}\n\n${message}`,
+      }),
     });
-    await transporter.sendMail({
-      // Zoho only allows sending from the authenticated mailbox; the visitor goes in Reply-To.
-      from: `InterviewAI website <${process.env.ZOHO_SMTP_USER}>`,
-      to: process.env.CONTACT_TO_EMAIL ?? process.env.ZOHO_SMTP_USER,
-      replyTo: `${name} <${email}>`,
-      subject: `[InterviewAI] ${role} enquiry from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nI am a: ${role}\n\n${message}`,
-    });
+    if (!response.ok) {
+      throw new Error(`Resend ${response.status}: ${(await response.text()).slice(0, 300)}`);
+    }
     return { status: "success", message: "Thanks! Your message has been sent. We'll reply by email." };
   } catch (error) {
     console.error("[contact] send failed", error);
