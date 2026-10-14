@@ -1,0 +1,149 @@
+/**
+ * DRAFT legal text. Have it reviewed by a lawyer in Nepal before relying on it.
+ * Each section renders as an h2 followed by paragraphs and an optional bullet list.
+ */
+import { CONTACT_EMAIL, JURISDICTION, SITE_NAME } from "@/lib/config";
+
+export interface LegalSection {
+  title: string;
+  paragraphs: string[];
+  bullets?: string[];
+}
+
+export const privacy: { title: string; intro: string; sections: LegalSection[] } = {
+  title: "Privacy policy",
+  intro: `This policy explains what happens to the information you give ${SITE_NAME}. In short: there are no accounts and no database, and your details are used only to generate your report.`,
+  sections: [
+    {
+      title: "What you enter",
+      paragraphs: ["To generate a report, you may enter:"],
+      bullets: [
+        "Personal details: full name, date of birth and nationality",
+        "Academic background: previous qualification, gap years and work experience",
+        "Course details: course, university, university website and intake",
+        "Financial details: tuition fee, funding source, sponsor details and bank balance",
+        "Immigration history: previous visa applications or refusals",
+        "Documents: your offer letter and CV, as text or as PDF, DOCX, JPG or PNG files",
+      ],
+    },
+    {
+      title: "How it is processed",
+      paragraphs: [
+        "Your details and documents are sent securely to our server, where documents are converted to text and combined into a request to Google's Gemini API. The generated report is sent back to your browser.",
+        `${SITE_NAME} has no database and does not keep your details, documents or report after the request finishes. The report exists only in your browser tab; if you close or reload the page it is gone, so copy or save it if you want to keep it.`,
+      ],
+    },
+    {
+      title: "Third parties",
+      paragraphs: [
+        "We use Google's paid Gemini API to generate reports. Under Google's paid API terms, Google does not use your prompts or responses to improve its products. Google may process the data temporarily to provide the service and to detect abuse.",
+        "Our websites are hosted by a cloud provider that processes requests to deliver the pages and the app.",
+      ],
+    },
+    {
+      title: "Cookies and analytics",
+      paragraphs: ["This website and the app do not use analytics or advertising cookies, and do not track you across sites."],
+    },
+    {
+      title: "Contact form",
+      paragraphs: [
+        "If you send a message through our contact form, we receive your name, email address, the type of enquiry and your message by email. We use them only to reply to you and delete them when they're no longer needed.",
+      ],
+    },
+    {
+      title: "Your rights",
+      paragraphs: [
+        `Under Nepal's Individual Privacy Act, 2075 (2018) and other laws that may apply to you, you can ask what information we hold about you, and ask us to correct or delete it. Because we don't store report data, in most cases we hold nothing beyond contact form emails. Email ${CONTACT_EMAIL} with any request.`,
+      ],
+    },
+    {
+      title: "Children",
+      paragraphs: [`${SITE_NAME} is intended for people aged 16 and over.`],
+    },
+    {
+      title: "Changes",
+      paragraphs: ["If we change how we process data, we'll update this page and the date at the top."],
+    },
+    {
+      title: "Contact",
+      paragraphs: [`Questions about privacy? Email ${CONTACT_EMAIL}.`],
+    },
+  ],
+};
+
+export const terms: { title: string; intro: string; sections: LegalSection[] } = {
+  title: "Terms of use",
+  intro: `These terms apply to your use of the ${SITE_NAME} website and app. By using them, you agree to these terms.`,
+  sections: [
+    {
+      title: "Preparation guidance only",
+      paragraphs: [
+        `${SITE_NAME} generates practice questions, model answers, risk assessments and tips to help you prepare for a UKVI credibility interview. It is not legal or immigration advice. For advice about your application, speak to a qualified adviser.`,
+      ],
+    },
+    {
+      title: "No visa guarantee",
+      paragraphs: [
+        "Visa decisions are made by UK Visas and Immigration (UKVI) based on your individual circumstances. Using InterviewAI does not guarantee any outcome.",
+      ],
+    },
+    {
+      title: "Not affiliated with UKVI",
+      paragraphs: [
+        `${SITE_NAME} is an independent tool. It is not affiliated with, endorsed by or connected to UKVI, the Home Office or any university.`,
+      ],
+    },
+    {
+      title: "Answer truthfully",
+      paragraphs: [
+        "Model answers are examples to help you structure your own answers. Always give truthful, accurate answers in your interview and application. Never present information that isn't true.",
+      ],
+    },
+    {
+      title: "AI-generated content",
+      paragraphs: [
+        "Reports are generated by an AI model and may contain mistakes, including about universities and courses. Check important facts against official sources such as your offer letter and your university's website.",
+      ],
+    },
+    {
+      title: "Acceptable use",
+      paragraphs: ["You agree not to:"],
+      bullets: [
+        "Enter information about another person without their permission",
+        "Use the service to create false or misleading application material",
+        "Try to disrupt, overload or gain unauthorised access to the service",
+        "Use automated means to send large numbers of requests",
+      ],
+    },
+    {
+      title: "Age",
+      paragraphs: [`You must be at least 16 years old to use ${SITE_NAME}.`],
+    },
+    {
+      title: "Availability and price",
+      paragraphs: [
+        `${SITE_NAME} is currently free and in beta. We may change, suspend or stop the service, or introduce paid plans, at any time. We'll update these terms before charging for anything.`,
+      ],
+    },
+    {
+      title: "Liability",
+      paragraphs: [
+        `${SITE_NAME} is provided “as is”. To the extent permitted by law, we are not liable for any loss arising from your use of the service, including the outcome of any visa application or interview.`,
+      ],
+    },
+    {
+      title: "Governing law",
+      paragraphs: [
+        `These terms are governed by the laws of ${JURISDICTION.country}, and any disputes will be handled by ${JURISDICTION.courts}.`,
+      ],
+    },
+    {
+      title: "Changes to these terms",
+      paragraphs: ["We may update these terms. The date at the top shows when they last changed."],
+    },
+    {
+      title: "Contact",
+      paragraphs: [`Questions about these terms? Email ${CONTACT_EMAIL}.`],
+    },
+  ],
+};
