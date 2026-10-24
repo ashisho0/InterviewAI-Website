@@ -27,7 +27,7 @@ export const homeFaq: FaqItem[] = [
   {
     question: "Do you store my data?",
     answer:
-      "No. InterviewAI has no accounts and no database. Your details are processed in memory and sent to Google's paid Gemini API to write your report, and under Google's paid API terms that data isn't used to improve Google's products. The report stays in your browser tab, so copy or save it before you close the page.",
+      "No. InterviewAI has no accounts and no database. Your details are processed in memory and sent to a third-party AI service to write your report. The report stays in your browser tab, so copy or save it before you close the page.",
   },
   {
     question: "How long does it take?",

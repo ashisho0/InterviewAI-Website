@@ -75,7 +75,7 @@ export const features: Feature[] = [
       "Offer letter and CV are both optional, but make prep more specific",
       "Optional university website link for extra context",
     ],
-    source: "InterviewAI/src/lib/document-parser.ts, src/app/api/generate/route.ts, src/lib/gemini.ts",
+    source: "InterviewAI/src/lib/document-parser.ts, src/app/api/generate/route.ts, src/lib/llm/",
   },
   {
     id: "honest",

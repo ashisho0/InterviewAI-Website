@@ -30,7 +30,7 @@ export const pricingPage = {
 
 export const interviewAiPage = {
   title: "How InterviewAI turns your documents into interview prep",
-  lead: "A UKVI-specialist prompt, strict guardrails and Google Gemini 2.5 Flash, working only from what you provide.",
+  lead: "A UKVI-specialist prompt, strict guardrails and an AI model, working only from what you provide.",
   reads: {
     title: "What it reads",
     body: "Everything you enter is combined into one picture of your application.",

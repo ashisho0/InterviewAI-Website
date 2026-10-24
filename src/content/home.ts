@@ -63,7 +63,7 @@ export const howItWorks = {
 export const spotlight = {
   eyebrow: "Inside InterviewAI",
   title: "A UKVI specialist's checklist, powered by AI",
-  body: "InterviewAI combines a prompt written from the point of view of a UKVI credibility interview specialist with Google Gemini 2.5 Flash. It reads what you give it, structures the interview into six categories, checks six common risk factors, and is forbidden from inventing numbers or promising outcomes.",
+  body: "InterviewAI combines a prompt written from the point of view of a UKVI credibility interview specialist with an AI model. It reads what you give it, structures the interview into six categories, checks six common risk factors, and is forbidden from inventing numbers or promising outcomes.",
   link: { label: "How the AI works", href: "/interview-ai" },
 } as const;
 

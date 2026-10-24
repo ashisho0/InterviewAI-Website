@@ -4,7 +4,7 @@ const steps = [
   { icon: FileText, title: "Your inputs", body: "Profile, offer letter, CV" },
   { icon: FileSearch, title: "Document reading", body: "PDF and DOCX to text; images read by AI" },
   { icon: ScrollText, title: "UKVI prompt", body: "6 categories, 6 risk checks, guardrails" },
-  { icon: Bot, title: "Gemini 2.5 Flash", body: "Writes a structured report" },
+  { icon: Bot, title: "AI model", body: "Writes a structured report" },
   { icon: ListChecks, title: "Your report", body: "Checked for completeness, retried once if needed" },
 ];
 
@@ -29,7 +29,7 @@ export function PipelineDiagram() {
         ))}
       </ol>
       <figcaption className="sr-only">
-        How InterviewAI works: your inputs are read and converted to text, combined with a UKVI interview prompt and guardrails, sent to Google Gemini 2.5 Flash, and returned as a checked, structured report.
+        How InterviewAI works: your inputs are read and converted to text, combined with a UKVI interview prompt and guardrails, sent to an AI model, and returned as a checked, structured report.
       </figcaption>
     </figure>
   );

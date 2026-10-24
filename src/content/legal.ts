@@ -29,14 +29,14 @@ export const privacy: { title: string; intro: string; sections: LegalSection[] }
     {
       title: "How it is processed",
       paragraphs: [
-        "Your details and documents are sent securely to our server, where documents are converted to text and combined into a request to Google's Gemini API. The generated report is sent back to your browser.",
+        "Your details and documents are sent securely to our server, where documents are converted to text and combined into a request to an AI service provided by Google. The generated report is sent back to your browser.",
         `${SITE_NAME} has no database and does not keep your details, documents or report after the request finishes. The report exists only in your browser tab; if you close or reload the page it is gone, so copy or save it if you want to keep it.`,
       ],
     },
     {
       title: "Third parties",
       paragraphs: [
-        "We use Google's paid Gemini API to generate reports. Under Google's paid API terms, Google does not use your prompts or responses to improve its products. Google may process the data temporarily to provide the service and to detect abuse.",
+        "We use an AI service provided by Google to generate reports. Google may process the data temporarily to provide the service and to detect abuse.",
         "Our websites are hosted by a cloud provider that processes requests to deliver the pages and the app.",
       ],
     },

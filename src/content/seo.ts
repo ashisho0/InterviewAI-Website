@@ -16,7 +16,7 @@ export const seo = {
     path: "/interview-ai",
     title: "How InterviewAI Builds Your UKVI Interview Prep",
     description:
-      "See how InterviewAI reads your profile and documents, applies a UKVI prompt with strict guardrails and uses Gemini to write your prep.",
+      "See how InterviewAI reads your profile and documents, applies a UKVI prompt with strict guardrails and uses AI to write your prep.",
   },
   pricing: {
     path: "/pricing",
@@ -40,7 +40,7 @@ export const seo = {
     path: "/privacy",
     title: "Privacy Policy | InterviewAI",
     description:
-      "How InterviewAI processes the information you enter: no accounts, no database, and processing through Google's paid Gemini API.",
+      "How InterviewAI processes the information you enter: no accounts, no database, and processing by a third-party AI service.",
   },
   terms: {
     path: "/terms",
